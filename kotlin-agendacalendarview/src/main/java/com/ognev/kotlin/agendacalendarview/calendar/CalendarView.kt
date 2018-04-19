@@ -206,14 +206,15 @@ open class CalendarView : LinearLayout {
 
     private fun expandCalendarView() {
         val layoutParams = layoutParams as ViewGroup.MarginLayoutParams
-        layoutParams.height = (getResources().getDimension(R.dimen.calendar_header_height) + 5 * getResources().getDimension(R.dimen.day_cell_height)).toInt()
+        layoutParams.height = (getResources().getDimension(R.dimen.calendar_header_height) + 3 * getResources().getDimension(R.dimen.day_cell_height)).toInt()
         setLayoutParams(layoutParams)
     }
 
     private fun collapseCalendarView() {
         val layoutParams = getLayoutParams() as ViewGroup.MarginLayoutParams
-        layoutParams.height = (getResources().getDimension(R.dimen.calendar_header_height) + 2 * getResources().getDimension(R.dimen.day_cell_height)).toInt()
+        layoutParams.height = (getResources().getDimension(R.dimen.calendar_header_height) + getResources().getDimension(R.dimen.day_cell_height)).toInt()
         setLayoutParams(layoutParams)
+        scrollToPosition(mCurrentListPosition)
     }
 
     /**

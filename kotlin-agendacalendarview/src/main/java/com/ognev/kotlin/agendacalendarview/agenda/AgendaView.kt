@@ -43,7 +43,7 @@ class AgendaView : FrameLayout {
                         val clickedEvent = event
                         agendaListView.scrollToCurrentDate(clickedEvent.calendar)
                     } else if (event is Events.CalendarScrolledEvent) {
-                        val offset = (3 * getResources().getDimension(R.dimen.day_cell_height))
+                        val offset = (2 * getResources().getDimension(R.dimen.day_cell_height))
                         translateList(offset.toInt())
                     } else if (event is Events.EventsFetched) {
                         (agendaListView.adapter as AgendaAdapter).updateEvents()
@@ -53,10 +53,10 @@ class AgendaView : FrameLayout {
                                     override
                                     fun onGlobalLayout() {
                                         if (width !== 0 && height !== 0) {
-                                            // display only two visible rows on the calendar view
+                                            // display only one visible row on the calendar view
                                             val layoutParams = layoutParams as ViewGroup.MarginLayoutParams
                                             val height = height
-                                            val margin = (getContext().getResources().getDimension(R.dimen.calendar_header_height) + 2 * getContext().getResources().getDimension(R.dimen.day_cell_height))
+                                            val margin = (getContext().getResources().getDimension(R.dimen.calendar_header_height) + getContext().getResources().getDimension(R.dimen.day_cell_height))
                                             layoutParams.height = height
                                             layoutParams.setMargins(0, margin.toInt(), 0, 0)
                                             setLayoutParams(layoutParams)
